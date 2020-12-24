@@ -6,13 +6,15 @@ pipeline{
                     sh 'mvn pom.xml clean package'
                 }
 
-                post{
-                    success{
-                        echo 'Now Archiving the project........'
-                        archiveArtifacts artifacts '**/*.war'
-                    }
+            post {
+                success {
+                    echo "Now Archiving the Artifacts...."
+                    archiveArtifacts artifacts: '**/*.war'
+					    
                 }
             }
-            
+
         }
+            
+     }
 }
