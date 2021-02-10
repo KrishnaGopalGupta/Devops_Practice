@@ -24,7 +24,7 @@ stages{
 
     stage('Deploy the Application') {
         steps{
-            sh 'scp -i /home/ec2-user/k1/aws1.pem **/target/*.war ec2-user@{params.defaultValue}:/opt/tomcat-8.5_Prod/webapps'
+            sh 'scp -i /home/ec2-user/k1/aws1.pem **/target/*.war ec2-user@13.232.101.112:/opt/tomcat-8.5_Prod/webapps'
         }
     }
 }
