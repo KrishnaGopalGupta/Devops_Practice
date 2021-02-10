@@ -16,10 +16,7 @@ pipeline {
             }
         }
 
-        stage ('Deploy To staging Server') {
-            steps {
-                build job: 'Deploy-to-staging'
-            }
+        
         }       
     }
 }
