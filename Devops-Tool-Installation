@@ -1,0 +1,85 @@
+## Ansible Installation ##
+sudo subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
+sudo yum update
+sudo yum install ansible
+ansible --version
+
+## Git installation ##
+yum install git
+
+## docker Installation ##
+https://docs.docker.com/engine/install/
+
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
+yum list docker-ce --showduplicates | sort -r
+ sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
+  sudo systemctl start docker
+  
+ --- ubuntu---
+  sudo apt-get update
+ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  
+  
+## Docker machine ##  
+http://docs.docker.oeynet.com/machine/install-machine/#installing-bash-completion-scripts
+
+
+base=https://github.com/docker/machine/releases/download/v0.16.0 
+curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine
+mv /tmp/docker-machine /usr/local/bin/ 
+chmod +x /usr/local/bin/docker-machine
+docker-machine --version
+
+
+
+## Jenkins Installation ##
+
+https://www.jenkins.io/doc/book/installing/linux/
+https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04
+
+
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
+
+----------------
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+sudo yum upgrade
+sudo yum install jenkins
+sudo systemctl start jenkins
+
+
+## Java Installation ##
+https://tecadmin.net/install-oracle-java-8-ubuntu-via-ppa/
+https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOpenJdkDeb.html
+
+sudo apt update
+sudo apt install openjdk-8-jdk openjdk-8-jre
+java -version
+----------Setup JAVA_HOME and JRE_HOME Variable----
+cat >> /etc/environment <<EOL
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+EOL
+
